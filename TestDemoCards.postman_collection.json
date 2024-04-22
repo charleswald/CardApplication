@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "cbeaa858-fa4c-480a-95a9-1c99062952d4",
+		"name": "TestDemoCards",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23232551"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "createCard",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Signin",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllCards",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "ModifyCardDetails",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getCardsbyCard_Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWNyZUBleGFtcGxlLmNvbSIsImV4cCI6MTcxNDU2MTIyNX0.Vgmre81WW_uG2mi5DVWUwNYfSNXbd7jRvNRz_of9wY0ssRwAUOYJmnXNuP65nthgv8Yti5hOmrcYUwghEblf4Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/cards/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"cards",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCardsbyCard_Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWNyZUBleGFtcGxlLmNvbSIsImV4cCI6MTcxNDU2MTIyNX0.Vgmre81WW_uG2mi5DVWUwNYfSNXbd7jRvNRz_of9wY0ssRwAUOYJmnXNuP65nthgv8Yti5hOmrcYUwghEblf4Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/cards/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"cards",
+						"11"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
