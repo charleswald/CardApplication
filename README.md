@@ -1,13 +1,17 @@
-Spring Boot JWT Authentication example with Spring Security & Spring Data JPA
+This is a Demo Cards Application 
 
-
-Spring Boot Server Architecture with Spring Security
-You can have an overview of our Spring Boot Server with the diagram below:
-
-springbootjwtauthenticationspringsecurityarchitecture
+Technologies going to use,
+Java 17
+Spring Boot 2.5.4
+JPA
+MySQL
+Lombok
+Maven
+API Documentation swagger 2
+IntelliJ Idea for IDE
 
 Dependency
-– If you want to use  MySQL:
+– MySQL:
 
 <dependency>
   <groupId>com.mysql</groupId>
@@ -86,4 +90,4 @@ INSERT INTO cards_snapshot.users (
     '2024-04-19 12:00:00', -- Format: 'YYYY-MM-DD HH:MM:SS'
     '2024-04-19 12:00:00'
 );
-For more detail, please visit:
+
