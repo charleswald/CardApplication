@@ -8,6 +8,8 @@ import com.example.cardsapp.cardsapp.service.cardsservices.ICardService;
 import com.example.cardsapp.cardsapp.utils.Constants.UserRole;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -25,8 +27,16 @@ public class CardsController {
     @Autowired
     ICardService cardService;
 
+
+//    @ApiOperation(value = "Find user by ID", notes = "Provide an ID to look up specific user from the database", response = User.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved user"),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+    })
     @PostMapping
-    @ApiOperation("Create a Card End Point")
+    @ApiOperation(value = "Create a Card ", notes = "Creates a card for a specific user")
     public ResponseEntity<?> createCard(@Valid @RequestBody CardRequest request) {
 
         Authentication authToken = SecurityContextHolder.getContext().getAuthentication();
@@ -38,7 +48,7 @@ public class CardsController {
     }
 
     @GetMapping
-    @ApiOperation("Fetch all Cards End Point")
+    @ApiOperation(value = "Fetch all Cards for a specific user", notes = "Fetch all cards for users who have admin rights")
     public ResponseEntity<?> getAllCards(Pageable pageable) {
 
         Authentication authToken = SecurityContextHolder.getContext().getAuthentication();
@@ -54,7 +64,7 @@ public class CardsController {
     }
 
     @GetMapping("{cardId}")
-    @ApiOperation("Fetch a Card by card Id End Point")
+    @ApiOperation(value = "Fetch a Card by card Id", notes = "Fetch a specific card using the card id. User should have the rights to pull a specific card ")
     public ResponseEntity<CardsModel> getCard(@PathVariable Long cardId) {
 
         Authentication authToken = SecurityContextHolder.getContext().getAuthentication();
@@ -69,7 +79,7 @@ public class CardsController {
     }
 
     @GetMapping("/member")
-    @ApiOperation("Fetch all Cards for a member")
+    @ApiOperation(value = "Fetch all Cards associated with a member", notes = "Fetch all cards associated with a specific member ")
     public ResponseEntity<?> getCardsByEmail(Pageable pageable) {
 
         Authentication authToken = SecurityContextHolder.getContext().getAuthentication();
@@ -86,7 +96,7 @@ public class CardsController {
 
 
     @DeleteMapping("{cardId}")
-    @ApiOperation("Delete a Card by card id")
+    @ApiOperation(value = "Delete a Card using the card id", notes = "Delete a card associated with a specific card id. User must have rights to perform this action ")
     public ResponseEntity<?> deleteCard(@PathVariable Long cardId) {
 
         //get the username/email
@@ -104,7 +114,7 @@ public class CardsController {
     }
 
     @PutMapping("{cardId}")
-    @ApiOperation("Edit a Card by card id")
+    @ApiOperation(value = "Edit a Card associated with a specific card id", notes = "Modify a card associated with a specific card id. User must have rights to perform this action ")
     public ResponseEntity<CardsModel> updateCard(@PathVariable Long cardId, @RequestBody UpdateRequest request) {
 
         Authentication authToken = SecurityContextHolder.getContext().getAuthentication();

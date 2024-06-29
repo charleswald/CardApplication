@@ -11,6 +11,8 @@ public class SecurityConstants
 
     public static final String SIGNUP_URL="/users";
 
+    public static final String SWAGGER_URL="/swagger-ui/**";
+
     public static String getTokenSecret()
     {
         AppProperties appProperties = (AppProperties) SpringApplicationContext.getBean("appProperties");

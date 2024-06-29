@@ -24,15 +24,16 @@ public class WebSecurity extends WebSecurityConfigurerAdapter
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception
-    {
-
+    protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers(HttpMethod.POST, SecurityConstants.SIGNUP_URL).permitAll().anyRequest()
-                .authenticated().and().addFilter(getAuthenticationFilter())
-                .addFilter(new AutherizationFilter(authenticationManager())).sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
+                // Permit access to Swagger endpoints
+                .antMatchers("/swagger-ui/**", "/v3/api-docs/**", "/v2/api-docs/**", "/swagger-resources/**", "/webjars/**").permitAll()
+                // Permit access to signup endpoint
+                .antMatchers(HttpMethod.POST, SecurityConstants.SIGNUP_URL).permitAll()
+                .anyRequest().authenticated().and()
+                .addFilter(getAuthenticationFilter())
+                .addFilter(new AutherizationFilter(authenticationManager()))
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
     @Override

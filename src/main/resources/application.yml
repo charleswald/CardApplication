@@ -2,15 +2,20 @@ spring:
   application:
     name: cards-app
   datasource:
-    url: jdbc:mysql://localhost:3306/cards_snapshot?useSSL=false
+    url: jdbc:mysql://localhost:3306/cards_snapshot?allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: Pass123
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.xml
+    enabled: true
+    drop-first: false
+    default-schema: cards_snapshot
 
   jpa:
     hibernate:
       dialect: org.hibernate.dialect.MySQLDialect
-      ddl-auto: update
+      ddl-auto: none
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
 tokenSecret: card24kjljtrt
